@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>Title</title>
+    <script type="text/javascript" charset="UTF-8" src="./echarts.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="./jquery.min.js"></script>
+
+    <!--    <script type="text/javascript" charset="UTF-8" src="./js/daxingTest.js"></script>-->
+    <script type="text/javascript" charset="UTF-8" src="./beijing.js"></script>
+</head>
+<body>
+<div style="width:device-width;height:240px;display: flex;flex-flow: column;justify-content: space-between">
+    <div style="width:100%;height:100%;" id="chartmain"></div>
+</div>
+</body>
+<script type="text/javascript">
+
+
+    // echarts.registerMap('china', mapJson);
+    echarts.registerMap('beijing', beijingMapJson);
+    var id = 'chartmain'
+    var inner_chart = echarts.init(document.getElementById(id));
+    inner_chart.setOption(option)
+
+    function getJson2(res){
+        res = {
+            "message": "success",
+            "code": "200",
+            "body": [
+                {
+                    "name": "朝阳区",
+                    "value": 71
+                },
+                {
+                    "name": "海淀区",
+                    "value": 62
+                },
+                {
+                    "name": "西城区",
+                    "value": 53
+                },
+                {
+                    "name": "丰台区",
+                    "value": 42
+                },
+                {
+                    "name": "大兴区",
+                    "value": 39
+                },
+                {
+                    "name": "昌平区",
+                    "value": 29
+                },
+                {
+                    "name": "外地来京人员",
+                    "value": 25
+                },
+                {
+                    "name": "通州区",
+                    "value": 19
+                },
+                {
+                    "name": "房山区",
+                    "value": 16
+                },
+                {
+                    "name": "石景山区",
+                    "value": 14
+                },
+                {
+                    "name": "东城区",
+                    "value": 13
+                },
+                {
+                    "name": "顺义区",
+                    "value": 10
+                },
+                {
+                    "name": "怀柔区",
+                    "value": 7
+                },
+                {
+                    "name": "密云区",
+                    "value": 7
+                },
+                {
+                    "name": "门头沟区",
+                    "value": 3
+                },
+                {
+                    "name": "延庆区",
+                    "value": 1
+                }
+            ],
+            "timestamp": 0
+        }
+        let data = res.body
+        console.log(data)
+        inner_chart.setOption({series: [{data: data}]})
+    }
+    getJson2()
+    function getJson(res){
+        res=eval(res)
+        let data = res.body
+        console.log(data)
+        inner_chart.setOption({series: [{data: data}]})
+    }
+</script>
+</html>
